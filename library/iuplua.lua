@@ -1,0 +1,900 @@
+---@meta
+
+---Multi-platform toolkit for building graphical user interfaces.
+---@class IUP
+---@field BOX table
+---@field TREEREFTABLE table
+---@field WIDGET table
+---@field _M table
+---@field callbacks table
+---@field Alarm function
+---@field AnimatedLabel function
+---@field Append function
+---@field BackgroundBox function
+---@field Button function
+---@field Calendar function
+---@field CallGlobalMethod function
+---@field CallMethod function
+---@field Canvas function
+---@field Cbox function
+---@field ClassInfoDialog function
+---@field ClassMatch function
+---@field Clipboard function
+---@field Close function
+---@field ColorBrowser function
+---@field ColorDlg function
+---@field Colorbar function
+---@field Config function
+---@field ConfigDialogClosed function
+---@field ConfigDialogShow function
+---@field ConfigGetVariable function
+---@field ConfigGetVariableDef function
+---@field ConfigGetVariableId function
+---@field ConfigGetVariableIdDef function
+---@field ConfigLoad function
+---@field ConfigRecentInit function
+---@field ConfigRecentUpdate function
+---@field ConfigSave function
+---@field ConfigSetVariable function
+---@field ConfigSetVariableId function
+---@field ConvertXYToPos function
+---@field CopyAttributes function
+---@field CopyClassAttributes function
+---@field CopyString2UserData function
+---@field CopyUserData2String function
+---@field DatePick function
+---@field Destroy function
+---@field Detach function
+---@field DetachBox function
+---@field Dial function
+---@field Dialog function
+---@field DrawArc function
+---@field DrawBegin function
+---@field DrawEnd function
+---@field DrawFocusRect function
+---@field DrawGetClipRect function
+---@field DrawGetImageInfo function
+---@field DrawGetSize function
+---@field DrawGetTextSize function
+---@field DrawImage function
+---@field DrawLine function
+---@field DrawParentBackground function
+---@field DrawPolygon function
+---@field DrawRectangle function
+---@field DrawResetClip function
+---@field DrawSelectRect function
+---@field DrawSetClipRect function
+---@field DrawText function
+---@field DropButton function
+---@field ElementPropertiesDialog function
+---@field Execute function
+---@field ExecuteWait function
+---@field ExitLoop function
+---@field Expander function
+---@field FileDlg function
+---@field Fill function
+---@field FlatButton function
+---@field FlatFrame function
+---@field FlatLabel function
+---@field FlatList function
+---@field FlatScrollBox function
+---@field FlatSeparator function
+---@field FlatTabs function
+---@field FlatToggle function
+---@field FlatTree function
+---@field FlatVal function
+---@field Flush function
+---@field FontDlg function
+---@field Frame function
+---@field Gauge function
+---@field GetAllAttributes function
+---@field GetAllClasses function
+---@field GetAllDialogs function
+---@field GetAllNames function
+---@field GetAttribute function
+---@field GetAttributeData function
+---@field GetAttributeHandle function
+---@field GetAttributeId function
+---@field GetAttributeId2 function
+---@field GetAttributes function
+---@field GetBrother function
+---@field GetChild function
+---@field GetChildCount function
+---@field GetChildPos function
+---@field GetClass function
+---@field GetClassAttributes function
+---@field GetClassCallbacks function
+---@field GetClassName function
+---@field GetClassType function
+---@field GetColor function
+---@field GetDialog function
+---@field GetDialogChild function
+---@field GetFile function
+---@field GetFocus function
+---@field GetFromC function
+---@field GetGlobal function
+---@field GetHandle function
+---@field GetLanguage function
+---@field GetLanguageString function
+---@field GetName function
+---@field GetNextChild function
+---@field GetParam function
+---@field GetParamHandle function
+---@field GetParamParam function
+---@field GetParent function
+---@field GetText function
+---@field GetWidget function
+---@field GlobalsDialog function
+---@field GridBox function
+---@field Hbox function
+---@field Help function
+---@field Hide function
+---@field Image function
+---@field ImageGetHandle function
+---@field ImageRGB function
+---@field ImageRGBA function
+---@field Insert function
+---@field IsContainer function
+---@field Item function
+---@field Label function
+---@field LayoutDialog function
+---@field Link function
+---@field List function
+---@field ListDialog function
+---@field Load function
+---@field LoadBuffer function
+---@field Log function
+---@field LoopStep function
+---@field LoopStepWait function
+---@field MainLoop function
+---@field MainLoopLevel function
+---@field Map function
+---@field Menu function
+---@field Message function
+---@field MessageAlarm function
+---@field MessageDlg function
+---@field MessageError function
+---@field MultiBox function
+---@field MultiLine function
+---@field NewClass function
+---@field NextField function
+---@field Normalizer function
+---@field Open function
+---@field Param function
+---@field ParamBoxv function
+---@field PlayInput function
+---@field Popup function
+---@field PostMessage function
+---@field PreviousField function
+---@field ProgressBar function
+---@field ProgressDlg function
+---@field RGB function
+---@field Radio function
+---@field RecordInput function
+---@field Redraw function
+---@field Refresh function
+---@field RefreshChildren function
+---@field RegisterCallback function
+---@field RegisterHandle function
+---@field RegisterWidget function
+---@field Reparent function
+---@field ResetAttribute function
+---@field SaveClassAttributes function
+---@field SaveImageAsText function
+---@field Sbox function
+---@field Scanf function
+---@field ScrollBox function
+---@field Separator function
+---@field SetAttribute function
+---@field SetAttributeId function
+---@field SetAttributeId2 function
+---@field SetAttributes function
+---@field SetCallback function
+---@field SetClass function
+---@field SetClassDefaultAttribute function
+---@field SetFocus function
+---@field SetFunction function
+---@field SetGlobal function
+---@field SetGlobalCallback function
+---@field SetHandle function
+---@field SetHandleName function
+---@field SetIdle function
+---@field SetLanguage function
+---@field SetLanguagePack function
+---@field SetLanguageString function
+---@field SetMethod function
+---@field SetWidget function
+---@field Show function
+---@field ShowXY function
+---@field Space function
+---@field Spin function
+---@field Spinbox function
+---@field Split function
+---@field StoreAttribute function
+---@field StoreAttributeId function
+---@field StoreAttributeId2 function
+---@field StoreGlobal function
+---@field StringChangeCase function
+---@field StringCompare function
+---@field Submenu function
+---@field Tabs function
+---@field Text function
+---@field TextConvertLinColToPos function
+---@field TextConvertPosToLinCol function
+---@field Thread function
+---@field Timer function
+---@field Toggle function
+---@field Tree function
+---@field TreeAddNodes function
+---@field TreeAddNodesRec function
+---@field TreeGetId function
+---@field TreeGetTable function
+---@field TreeGetTableId function
+---@field TreeGetUserId function
+---@field TreeSetAncestorsAttributes function
+---@field TreeSetAttributeHandle function
+---@field TreeSetDescendantsAttributes function
+---@field TreeSetNodeAttrib function
+---@field TreeSetNodeAttributes function
+---@field TreeSetState function
+---@field TreeSetTableId function
+---@field TreeSetUserId function
+---@field TreeSetValue function
+---@field Unmap function
+---@field Update function
+---@field UpdateChildren function
+---@field User function
+---@field Val function
+---@field Vbox function
+---@field Version function
+---@field VersionNumber function
+---@field VersionShow function
+---@field XkeyAlt function
+---@field XkeyBase function
+---@field XkeyCtrl function
+---@field XkeyShift function
+---@field XkeySys function
+---@field Zbox function
+---@field _ERRORMESSAGE function
+---@field animatedlabel function
+---@field backgroundbox function
+---@field button function
+---@field calendar function
+---@field canvas function
+---@field cbox function
+---@field clipboard function
+---@field colorbar function
+---@field colorbrowser function
+---@field colordlg function
+---@field config function
+---@field datepick function
+---@field detachbox function
+---@field dial function
+---@field dialog function
+---@field dofile function
+---@field dostring function
+---@field dropbutton function
+---@field expander function
+---@field filedlg function
+---@field fill function
+---@field flatbutton function
+---@field flatframe function
+---@field flatlabel function
+---@field flatlist function
+---@field flatscrollbox function
+---@field flatseparator function
+---@field flattabs function
+---@field flattoggle function
+---@field flattree function
+---@field flatval function
+---@field fontdlg function
+---@field frame function
+---@field gauge function
+---@field gridbox function
+---@field hbox function
+---@field ihandle_compare function
+---@field ihandle_tostring function
+---@field image function
+---@field imagergb function
+---@field imagergba function
+---@field isAltXkey function
+---@field isCtrlXkey function
+---@field isShiftXkey function
+---@field isSysXkey function
+---@field isXkey function
+---@field isalt function
+---@field isbutton1 function
+---@field isbutton2 function
+---@field isbutton3 function
+---@field isbutton4 function
+---@field isbutton5 function
+---@field iscontrol function
+---@field isdouble function
+---@field isprint function
+---@field isshift function
+---@field issys function
+---@field isxkey function
+---@field item function
+---@field key_open function
+---@field label function
+---@field layoutdialog function
+---@field link function
+---@field list function
+---@field menu function
+---@field messagedlg function
+---@field multibox function
+---@field multiline function
+---@field normalizer function
+---@field param function
+---@field parambox function
+---@field progressbar function
+---@field progressdlg function
+---@field radio function
+---@field sbox function
+---@field scrollbox function
+---@field separator function
+---@field space function
+---@field spin function
+---@field spinbox function
+---@field split function
+---@field submenu function
+---@field tabs function
+---@field text function
+---@field thread function
+---@field timer function
+---@field toggle function
+---@field tree function
+---@field user function
+---@field val function
+---@field vbox function
+---@field zbox function
+local iup = {
+  BOTTOM = 65533,
+  BOTTOMPARENT = 65528,
+  BUTTON1 = 49,
+  BUTTON2 = 50,
+  BUTTON3 = 51,
+  BUTTON4 = 52,
+  BUTTON5 = 53,
+  CENTER = 65535,
+  CENTERPARENT = 65530,
+  CLOSE = -3,
+  CONTINUE = -4,
+  CURRENT = 65531,
+  DEFAULT = -2,
+  ERROR = 1,
+  GETPARAM_BUTTON1 = -1,
+  GETPARAM_BUTTON2 = -3,
+  GETPARAM_BUTTON3 = -4,
+  GETPARAM_CANCEL = -3,
+  GETPARAM_CLOSE = -5,
+  GETPARAM_HELP = -4,
+  GETPARAM_INIT = -2,
+  GETPARAM_MAP = -6,
+  GETPARAM_OK = -1,
+  HIDE = 4,
+  IGNORE = -1,
+  INVALID = -1,
+  INVALID_ID = -10,
+  K_0 = 48,
+  K_1 = 49,
+  K_2 = 50,
+  K_3 = 51,
+  K_4 = 52,
+  K_5 = 53,
+  K_6 = 54,
+  K_7 = 55,
+  K_8 = 56,
+  K_9 = 57,
+  K_A = 65,
+  K_B = 66,
+  K_BS = 8,
+  K_C = 67,
+  K_CAPS = 65509,
+  K_CR = 13,
+  K_Ccedilla = 199,
+  K_D = 68,
+  K_DEL = 65535,
+  K_DOWN = 65364,
+  K_E = 69,
+  K_END = 65367,
+  K_ESC = 65307,
+  K_F = 70,
+  K_F1 = 65470,
+  K_F10 = 65479,
+  K_F11 = 65480,
+  K_F12 = 65481,
+  K_F2 = 65471,
+  K_F3 = 65472,
+  K_F4 = 65473,
+  K_F5 = 65474,
+  K_F6 = 65475,
+  K_F7 = 65476,
+  K_F8 = 65477,
+  K_F9 = 65478,
+  K_G = 71,
+  K_H = 72,
+  K_HOME = 65360,
+  K_I = 73,
+  K_INS = 65379,
+  K_J = 74,
+  K_K = 75,
+  K_L = 76,
+  K_LALT = 65513,
+  K_LCTRL = 65507,
+  K_LEFT = 65361,
+  K_LSHIFT = 65505,
+  K_M = 77,
+  K_MIDDLE = 65291,
+  K_Menu = 65383,
+  K_N = 78,
+  K_NUM = 65407,
+  K_O = 79,
+  K_P = 80,
+  K_PAUSE = 65299,
+  K_PGDN = 65366,
+  K_PGUP = 65365,
+  K_Print = 65377,
+  K_Q = 81,
+  K_R = 82,
+  K_RALT = 65514,
+  K_RCTRL = 65508,
+  K_RIGHT = 65363,
+  K_RSHIFT = 65506,
+  K_S = 83,
+  K_SCROLL = 65300,
+  K_SP = 32,
+  K_T = 84,
+  K_TAB = 9,
+  K_U = 85,
+  K_UP = 65362,
+  K_V = 86,
+  K_W = 87,
+  K_X = 88,
+  K_Y = 89,
+  K_Z = 90,
+  K_a = 97,
+  K_acute = 180,
+  K_ampersand = 38,
+  K_apostrophe = 39,
+  K_asterisk = 42,
+  K_at = 64,
+  K_b = 98,
+  K_backslash = 92,
+  K_bar = 124,
+  K_braceleft = 123,
+  K_braceright = 125,
+  K_bracketleft = 91,
+  K_bracketright = 93,
+  K_c = 99,
+  K_c0 = 536870960,
+  K_c1 = 536870961,
+  K_c2 = 536870962,
+  K_c3 = 536870963,
+  K_c4 = 536870964,
+  K_c5 = 536870965,
+  K_c6 = 536870966,
+  K_c7 = 536870967,
+  K_c8 = 536870968,
+  K_c9 = 536870969,
+  K_cA = 536870977,
+  K_cAmpersand = 536870950,
+  K_cApostrophe = 536870951,
+  K_cAsterisk = 536870954,
+  K_cAt = 536870976,
+  K_cB = 536870978,
+  K_cBS = 536870920,
+  K_cBackslash = 536871004,
+  K_cBar = 536871036,
+  K_cBraceleft = 536871035,
+  K_cBraceright = 536871037,
+  K_cBracketleft = 536871003,
+  K_cBracketright = 536871005,
+  K_cC = 536870979,
+  K_cCR = 536870925,
+  K_cCcedilla = 536871111,
+  K_cCircum = 536871006,
+  K_cColon = 536870970,
+  K_cComma = 536870956,
+  K_cD = 536870980,
+  K_cDEL = 536936447,
+  K_cDOWN = 536936276,
+  K_cDollar = 536870948,
+  K_cE = 536870981,
+  K_cEND = 536936279,
+  K_cESC = 536936219,
+  K_cEqual = 536870973,
+  K_cExclam = 536870945,
+  K_cF = 536870982,
+  K_cF1 = 536936382,
+  K_cF10 = 536936391,
+  K_cF11 = 536936392,
+  K_cF12 = 536936393,
+  K_cF2 = 536936383,
+  K_cF3 = 536936384,
+  K_cF4 = 536936385,
+  K_cF5 = 536936386,
+  K_cF6 = 536936387,
+  K_cF7 = 536936388,
+  K_cF8 = 536936389,
+  K_cF9 = 536936390,
+  K_cG = 536870983,
+  K_cGrave = 536871008,
+  K_cGreater = 536870974,
+  K_cH = 536870984,
+  K_cHOME = 536936272,
+  K_cI = 536870985,
+  K_cINS = 536936291,
+  K_cJ = 536870986,
+  K_cK = 536870987,
+  K_cL = 536870988,
+  K_cLEFT = 536936273,
+  K_cLess = 536870972,
+  K_cM = 536870989,
+  K_cMIDDLE = 536936203,
+  K_cMenu = 536936295,
+  K_cMinus = 536870957,
+  K_cN = 536870990,
+  K_cNumbersign = 536870947,
+  K_cO = 536870991,
+  K_cP = 536870992,
+  K_cPAUSE = 536936211,
+  K_cPGDN = 536936278,
+  K_cPGUP = 536936277,
+  K_cParentleft = 536870952,
+  K_cParentright = 536870953,
+  K_cPercent = 536870949,
+  K_cPeriod = 536870958,
+  K_cPlus = 536870955,
+  K_cPrint = 536936289,
+  K_cQ = 536870993,
+  K_cQuestion = 536870975,
+  K_cQuotedbl = 536870946,
+  K_cR = 536870994,
+  K_cRIGHT = 536936275,
+  K_cS = 536870995,
+  K_cSP = 536870944,
+  K_cSemicolon = 536870971,
+  K_cSlash = 536870959,
+  K_cT = 536870996,
+  K_cTAB = 536870921,
+  K_cTilde = 536871038,
+  K_cU = 536870997,
+  K_cUP = 536936274,
+  K_cUnderscore = 536871007,
+  K_cV = 536870998,
+  K_cW = 536870999,
+  K_cX = 536871000,
+  K_cY = 536871001,
+  K_cZ = 536871002,
+  K_ccedilla = 231,
+  K_circum = 94,
+  K_colon = 58,
+  K_comma = 44,
+  K_d = 100,
+  K_diaeresis = 168,
+  K_dollar = 36,
+  K_e = 101,
+  K_equal = 61,
+  K_exclam = 33,
+  K_f = 102,
+  K_g = 103,
+  K_grave = 96,
+  K_greater = 62,
+  K_h = 104,
+  K_i = 105,
+  K_j = 106,
+  K_k = 107,
+  K_l = 108,
+  K_less = 60,
+  K_m = 109,
+  K_m0 = 1073741872,
+  K_m1 = 1073741873,
+  K_m2 = 1073741874,
+  K_m3 = 1073741875,
+  K_m4 = 1073741876,
+  K_m5 = 1073741877,
+  K_m6 = 1073741878,
+  K_m7 = 1073741879,
+  K_m8 = 1073741880,
+  K_m9 = 1073741881,
+  K_mA = 1073741889,
+  K_mAmpersand = 1073741862,
+  K_mApostrophe = 1073741863,
+  K_mAsterisk = 1073741866,
+  K_mAt = 1073741888,
+  K_mB = 1073741890,
+  K_mBS = 1073741832,
+  K_mBackslash = 1073741916,
+  K_mBar = 1073741948,
+  K_mBraceleft = 1073741947,
+  K_mBraceright = 1073741949,
+  K_mBracketleft = 1073741915,
+  K_mBracketright = 1073741917,
+  K_mC = 1073741891,
+  K_mCR = 1073741837,
+  K_mCcedilla = 1073742023,
+  K_mCircum = 1073741918,
+  K_mColon = 1073741882,
+  K_mComma = 1073741868,
+  K_mD = 1073741892,
+  K_mDEL = 1073807359,
+  K_mDOWN = 1073807188,
+  K_mDollar = 1073741860,
+  K_mE = 1073741893,
+  K_mEND = 1073807191,
+  K_mESC = 1073807131,
+  K_mEqual = 1073741885,
+  K_mExclam = 1073741857,
+  K_mF = 1073741894,
+  K_mF1 = 1073807294,
+  K_mF10 = 1073807303,
+  K_mF11 = 1073807304,
+  K_mF12 = 1073807305,
+  K_mF2 = 1073807295,
+  K_mF3 = 1073807296,
+  K_mF4 = 1073807297,
+  K_mF5 = 1073807298,
+  K_mF6 = 1073807299,
+  K_mF7 = 1073807300,
+  K_mF8 = 1073807301,
+  K_mF9 = 1073807302,
+  K_mG = 1073741895,
+  K_mGrave = 1073741920,
+  K_mGreater = 1073741886,
+  K_mH = 1073741896,
+  K_mHOME = 1073807184,
+  K_mI = 1073741897,
+  K_mINS = 1073807203,
+  K_mJ = 1073741898,
+  K_mK = 1073741899,
+  K_mL = 1073741900,
+  K_mLEFT = 1073807185,
+  K_mLess = 1073741884,
+  K_mM = 1073741901,
+  K_mMIDDLE = 1073807115,
+  K_mMenu = 1073807207,
+  K_mMinus = 1073741869,
+  K_mN = 1073741902,
+  K_mNumbersign = 1073741859,
+  K_mO = 1073741903,
+  K_mP = 1073741904,
+  K_mPAUSE = 1073807123,
+  K_mPGDN = 1073807190,
+  K_mPGUP = 1073807189,
+  K_mParentleft = 1073741864,
+  K_mParentright = 1073741865,
+  K_mPercent = 1073741861,
+  K_mPeriod = 1073741870,
+  K_mPlus = 1073741867,
+  K_mPrint = 1073807201,
+  K_mQ = 1073741905,
+  K_mQuestion = 1073741887,
+  K_mQuotedbl = 1073741858,
+  K_mR = 1073741906,
+  K_mRIGHT = 1073807187,
+  K_mS = 1073741907,
+  K_mSP = 1073741856,
+  K_mSemicolon = 1073741883,
+  K_mSlash = 1073741871,
+  K_mT = 1073741908,
+  K_mTAB = 1073741833,
+  K_mTilde = 1073741950,
+  K_mU = 1073741909,
+  K_mUP = 1073807186,
+  K_mUnderscore = 1073741919,
+  K_mV = 1073741910,
+  K_mW = 1073741911,
+  K_mX = 1073741912,
+  K_mY = 1073741913,
+  K_mZ = 1073741914,
+  K_minus = 45,
+  K_n = 110,
+  K_numbersign = 35,
+  K_o = 111,
+  K_p = 112,
+  K_parentleft = 40,
+  K_parentright = 41,
+  K_percent = 37,
+  K_period = 46,
+  K_plus = 43,
+  K_q = 113,
+  K_question = 63,
+  K_quotedbl = 34,
+  K_r = 114,
+  K_s = 115,
+  K_sAsterisk = 268435498,
+  K_sBS = 268435464,
+  K_sCR = 268435469,
+  K_sComma = 268435500,
+  K_sDEL = 268500991,
+  K_sDOWN = 268500820,
+  K_sEND = 268500823,
+  K_sESC = 268500763,
+  K_sF1 = 268500926,
+  K_sF10 = 268500935,
+  K_sF11 = 268500936,
+  K_sF12 = 268500937,
+  K_sF2 = 268500927,
+  K_sF3 = 268500928,
+  K_sF4 = 268500929,
+  K_sF5 = 268500930,
+  K_sF6 = 268500931,
+  K_sF7 = 268500932,
+  K_sF8 = 268500933,
+  K_sF9 = 268500934,
+  K_sHOME = 268500816,
+  K_sINS = 268500835,
+  K_sLEFT = 268500817,
+  K_sMIDDLE = 268500747,
+  K_sMenu = 268500839,
+  K_sMinus = 268435501,
+  K_sPAUSE = 268500755,
+  K_sPGDN = 268500822,
+  K_sPGUP = 268500821,
+  K_sPeriod = 268435502,
+  K_sPlus = 268435499,
+  K_sPrint = 268500833,
+  K_sRIGHT = 268500819,
+  K_sSP = 268435488,
+  K_sSlash = 268435503,
+  K_sTAB = 268435465,
+  K_sUP = 268500818,
+  K_semicolon = 59,
+  K_slash = 47,
+  K_t = 116,
+  K_tilde = 126,
+  K_u = 117,
+  K_underscore = 95,
+  K_v = 118,
+  K_w = 119,
+  K_x = 120,
+  K_y = 121,
+  K_y0 = -2147483600,
+  K_y1 = -2147483599,
+  K_y2 = -2147483598,
+  K_y3 = -2147483597,
+  K_y4 = -2147483596,
+  K_y5 = -2147483595,
+  K_y6 = -2147483594,
+  K_y7 = -2147483593,
+  K_y8 = -2147483592,
+  K_y9 = -2147483591,
+  K_yA = -2147483583,
+  K_yAmpersand = -2147483610,
+  K_yApostrophe = -2147483609,
+  K_yAsterisk = -2147483606,
+  K_yAt = -2147483584,
+  K_yB = -2147483582,
+  K_yBS = -2147483640,
+  K_yBackslash = -2147483556,
+  K_yBar = -2147483524,
+  K_yBraceleft = -2147483525,
+  K_yBraceright = -2147483523,
+  K_yBracketleft = -2147483557,
+  K_yBracketright = -2147483555,
+  K_yC = -2147483581,
+  K_yCR = -2147483635,
+  K_yCcedilla = -2147483449,
+  K_yCircum = -2147483554,
+  K_yColon = -2147483590,
+  K_yComma = -2147483604,
+  K_yD = -2147483580,
+  K_yDEL = -2147418113,
+  K_yDOWN = -2147418284,
+  K_yDollar = -2147483612,
+  K_yE = -2147483579,
+  K_yEND = -2147418281,
+  K_yESC = -2147418341,
+  K_yEqual = -2147483587,
+  K_yExclam = -2147483615,
+  K_yF = -2147483578,
+  K_yF1 = -2147418178,
+  K_yF10 = -2147418169,
+  K_yF11 = -2147418168,
+  K_yF12 = -2147418167,
+  K_yF2 = -2147418177,
+  K_yF3 = -2147418176,
+  K_yF4 = -2147418175,
+  K_yF5 = -2147418174,
+  K_yF6 = -2147418173,
+  K_yF7 = -2147418172,
+  K_yF8 = -2147418171,
+  K_yF9 = -2147418170,
+  K_yG = -2147483577,
+  K_yGrave = -2147483552,
+  K_yGreater = -2147483586,
+  K_yH = -2147483576,
+  K_yHOME = -2147418288,
+  K_yI = -2147483575,
+  K_yINS = -2147418269,
+  K_yJ = -2147483574,
+  K_yK = -2147483573,
+  K_yL = -2147483572,
+  K_yLEFT = -2147418287,
+  K_yLess = -2147483588,
+  K_yM = -2147483571,
+  K_yMIDDLE = -2147418357,
+  K_yMenu = -2147418265,
+  K_yMinus = -2147483603,
+  K_yN = -2147483570,
+  K_yNumbersign = -2147483613,
+  K_yO = -2147483569,
+  K_yP = -2147483568,
+  K_yPAUSE = -2147418349,
+  K_yPGDN = -2147418282,
+  K_yPGUP = -2147418283,
+  K_yParentleft = -2147483608,
+  K_yParentright = -2147483607,
+  K_yPercent = -2147483611,
+  K_yPeriod = -2147483602,
+  K_yPlus = -2147483605,
+  K_yPrint = -2147418271,
+  K_yQ = -2147483567,
+  K_yQuestion = -2147483585,
+  K_yQuotedbl = -2147483614,
+  K_yR = -2147483566,
+  K_yRIGHT = -2147418285,
+  K_yS = -2147483565,
+  K_ySP = -2147483616,
+  K_ySemicolon = -2147483589,
+  K_ySlash = -2147483601,
+  K_yT = -2147483564,
+  K_yTAB = -2147483639,
+  K_yTilde = -2147483522,
+  K_yU = -2147483563,
+  K_yUP = -2147418286,
+  K_yUnderscore = -2147483553,
+  K_yV = -2147483562,
+  K_yW = -2147483561,
+  K_yX = -2147483560,
+  K_yY = -2147483559,
+  K_yZ = -2147483558,
+  K_z = 122,
+  LEFT = 65534,
+  LEFTPARENT = 65529,
+  MAXIMIZE = 3,
+  MINIMIZE = 2,
+  MOUSEPOS = 65532,
+  NOERROR = 0,
+  OPENED = -1,
+  PRIMARY = -1,
+  RECBINARY = 0,
+  RECTEXT = 1,
+  RESTORE = 1,
+  RIGHT = 65533,
+  RIGHTPARENT = 65528,
+  SBDN = 1,
+  SBDRAGH = 11,
+  SBDRAGV = 5,
+  SBLEFT = 6,
+  SBPGDN = 3,
+  SBPGLEFT = 8,
+  SBPGRIGHT = 9,
+  SBPGUP = 2,
+  SBPOSH = 10,
+  SBPOSV = 4,
+  SBRIGHT = 7,
+  SBUP = 0,
+  SECONDARY = -2,
+  SHOW = 0,
+  TOP = 65534,
+  TOPPARENT = 65529,
+  _VERSION_NUMBER = 330000,
+  MASK_EFLOAT = '[+/-]?(/d+/.?/d*|/./d+)([eE][+/-]?/d+)?',
+  MASK_FLOAT = '[+/-]?(/d+/.?/d*|/./d+)',
+  MASK_FLOATCOMMA = '[+/-]?(/d+/,?/d*|/,/d+)',
+  MASK_INT = '[+/-]?/d+',
+  MASK_UFLOAT = '(/d+/.?/d*|/./d+)',
+  MASK_UFLOATCOMMA = '(/d+/,?/d*|/,/d+)',
+  MASK_UINT = '/d+',
+  _COPYRIGHT = 'Copyright (C) 1994-2020 Tecgraf/PUC-Rio',
+  _DESCRIPTION = 'Multi-platform Toolkit for Building Graphical User Interfaces',
+  _IUPOPEN_CALL = 'INTERNAL',
+  _NAME = 'IUP - Portable User Interface',
+  _PACKAGE = 'iuplua',
+  _VERSION = '3.30',
+  _VERSION_DATE = '2020/07/30',
+}
+
+return iup

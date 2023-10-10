@@ -1,0 +1,5 @@
+{
+  "name": "IUPLua",
+  "words": ["require[%s%(\"']+iuplua[%)\"']"],
+  "files": ["iuplua.lua"]
+}
